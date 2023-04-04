@@ -15,7 +15,8 @@ function App() {
         <h1>all blogs</h1>
         {blogs && blogs.map(blog => (
           <div key={blog.id}>{blog.title}</div>
-        ))}
+          ))}
+          <div>Refreshes?!</div>
       </header>
     </div>
   );

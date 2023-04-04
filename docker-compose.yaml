@@ -1,16 +1,34 @@
 version: "3.8"
+# docker-compose version set 3.8
 services:
   api:
+  # Name can differ from directory name
     build: ./api
+  # adding build option defining how to build image
+  # It is a relative file path of folder where
+  # Docker file is
     container_name: api_c
+  # Defines container name. Can differ from directory name
     ports:
+      # List of mappings you like
       - '4000:4000'
     volumes:
-      - ./api:/app
-      - ./app/node_modules
+  # List of volumes. We don't need to specify absolute
+  # path so we can use a path relative to docker-compose
+  # file
+      - ./api:/Users/tedis.rozenfelds/Downloads/Random/docker-crash-course/app
+  # Creates volume to map api folder to app folder in
+  # a container
+      - .:/Users/tedis.rozenfelds/Downloads/Random/docker-crash-course/app/node_modules
+      # To make sure that node_modules folder in container
+      # don't get deleted 
   myblog:
     build: ./myblog
     container_name: myblog_c
     ports:
       - '3000:3000'
+    volumes:
+      - ./myblog:/Users/tedis.rozenfelds/Downloads/Random/docker-crash-course/app/myblogapp
+      - .:/Users/tedis.rozenfelds/Downloads/Random/docker-crash-course/myblogapp/node_modules
     stdin_open: true
+    tty: true
