@@ -9,6 +9,9 @@ COPY package.json .
 # starting from layew in which it copies code files
 # (without runing RUN npm install)
 
+# Add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
 RUN npm install
 
 COPY . .
@@ -17,3 +20,4 @@ EXPOSE 3000
 # required for docker desktop port mapping
 
 CMD ["npm", "start"]
+

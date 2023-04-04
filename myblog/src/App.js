@@ -13,10 +13,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>all blogs</h1>
+        <div>What 22?</div>
         {blogs && blogs.map(blog => (
           <div key={blog.id}>{blog.title}</div>
           ))}
-          <div>Refreshes?!</div>
       </header>
     </div>
   );
